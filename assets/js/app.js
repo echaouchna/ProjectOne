@@ -1,27 +1,22 @@
-(function() {
-  'use strict';
+'use strict';
 
-  var authApp = angular.module('auth');
+var projectOneApp = angular.module('projectOneApp', []);
 
-  authApp.controller('authCtrl', ['$scope', '$rootScope', 'TodoService', function($scope, $rootScope, TodoService) {
-    $scope.formData = {};
-    $scope.todos = [];
+projectOneApp.controller('authController', ['$scope', '$rootScope', 'authService', function($scope, $rootScope, authService) {
+  $scope.user = undefined;
 
-    TodoService.getTodos().then(function(response) {
-      $scope.todos = response;
-    });
+  $scope.data = [{
+    value: "New",
+    onclick: "CreateNewDoc"
+  }, {
+    value: "Open",
+    onclick: "OpenDoc"
+  }, {
+    value: "Close",
+    onclick: "CloseDoc"
+  }];
 
-    $scope.addTodo = function() {
-      TodoService.addTodo($scope.formData).then(function(response) {
-        $scope.todos.push($scope.formData);
-        $scope.formData = {};
-      });
-    };
-
-    $scope.removeTodo = function(todo) {
-      TodoService.removeTodo(todo).then(function(response) {
-        $scope.todos.splice($scope.todos.indexOf(todo), 1);
-      });
-    };
-  }]);
-}());
+  authService.getUser().then(function(response) {
+    $scope.user = response;
+  });
+}]);
