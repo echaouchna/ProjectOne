@@ -1,8 +1,8 @@
 {
-  "name": "sails101-even-more-auth",
+  "name": "PrjectOne",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "Project One",
   "keywords": [],
   "dependencies": {
     "bcryptjs": "^2.3.0",
@@ -34,14 +34,18 @@
     "sails-generate-auth": "^0.3.1",
     "validator": "^4.9.0"
   },
+  "devDependencies": {
+    "bower": "~1.7.6"
+  },
   "scripts": {
-    "debug": "node debug app.js",
-    "start": "node app.js"
+    "debug": "nodemon --debug app.js",
+    "start": "nodemon app.js",
+    "postinstall": "bower cache clean && bower install"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nabil/sails101-even-more-auth.git"
+    "url": "git@bitbucket.org:echaouchna/projectone.git"
   },
   "author": "nabil",
   "license": ""
