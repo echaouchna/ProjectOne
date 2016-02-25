@@ -28,6 +28,7 @@
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
+    "q": "^1.4.1",
     "rc": "1.0.1",
     "sails": "~0.12.1",
     "sails-disk": "~0.10.9",
