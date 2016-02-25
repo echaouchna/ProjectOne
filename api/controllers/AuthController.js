@@ -30,26 +30,26 @@ var AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  login: function (req, res) {
-    var strategies = sails.config.passport
-      , providers  = {};
+  login: function(req, res) {
+    var strategies = sails.config.passport,
+      providers = {};
 
     // Get a list of available providers for use in your templates.
-    Object.keys(strategies).forEach(function (key) {
+    Object.keys(strategies).forEach(function(key) {
       if (key === 'local') {
         return;
       }
 
       providers[key] = {
-        name: strategies[key].name
-      , slug: key
+        name: strategies[key].name,
+        slug: key
       };
     });
 
     // Render the `auth/login.ext` view
     res.view({
-      providers : providers
-    , errors    : req.flash('error')
+      providers: providers,
+      errors: req.flash('error')
     });
   },
 
@@ -67,12 +67,12 @@ var AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  logout: function (req, res) {
+  logout: function(req, res) {
     req.logout();
-    
+
     // mark the user as logged out for auth purposes
     req.session.authenticated = false;
-    
+
     res.redirect('/');
   },
 
@@ -91,7 +91,7 @@ var AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  register: function (req, res) {
+  register: function(req, res) {
     res.view({
       errors: req.flash('error')
     });
@@ -103,7 +103,7 @@ var AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  provider: function (req, res) {
+  provider: function(req, res) {
     passport.endpoint(req, res);
   },
 
@@ -123,15 +123,15 @@ var AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  callback: function (req, res) {
-    function tryAgain (err) {
+  callback: function(req, res) {
+    function tryAgain(err) {
 
       // Only certain error messages are returned via req.flash('error', someError)
       // because we shouldn't expose internal authorization errors to the user.
       // We do return a generic error and the original request body.
       var flashError = req.flash('error')[0];
 
-      if (err && !flashError ) {
+      if (err && !flashError) {
         req.flash('error', 'Error.Passport.Generic');
       } else if (flashError) {
         req.flash('error', flashError);
@@ -155,19 +155,19 @@ var AuthController = {
       }
     }
 
-    passport.callback(req, res, function (err, user, challenges, statuses) {
+    passport.callback(req, res, function(err, user, challenges, statuses) {
       if (err || !user) {
         return tryAgain(challenges);
       }
 
-      req.login(user, function (err) {
+      req.login(user, function(err) {
         if (err) {
           return tryAgain(err);
         }
-        
+
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
         req.session.authenticated = true
-        
+
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
         res.redirect('/');
@@ -181,8 +181,12 @@ var AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  disconnect: function (req, res) {
+  disconnect: function(req, res) {
     passport.disconnect(req, res);
+  },
+
+  me: function(req, res) {
+    res.ok(req.user);
   }
 };
 

@@ -38,8 +38,8 @@
     <!--STYLES END-->
   </head>
 
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+  <body ng-app="projectOneApp">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="authController as authCtrl">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -63,10 +63,10 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li ng-show="user" class="username-padding" ng-cloak>{{user.username}}</li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-cog"></i>
-                <span class="caret"></span>
+                <i class="fa fa-bars"></i>
               </a>
               <ul class="dropdown-menu">
                 <li>
@@ -93,6 +93,14 @@
         <!--/.nav-collapse -->
       </div>
     </nav>
+    <br/>
+    <table class="table table-bordered hidden" ng-controller="authController">
+      <tr ng-repeat="row in data">
+        <td>{{row.value}}</td>
+        <td>{{row.onclick}}</td>
+      </tr>
+    </table>
+    <br/>
     <%- body %>
 
     <!--
@@ -117,7 +125,7 @@
     -->
 
     <!--TEMPLATES-->
-
+    
     <!--TEMPLATES END-->
 
     <!--
@@ -150,6 +158,8 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/services/authService.js"></script>
     <!--SCRIPTS END-->
   </body>
 

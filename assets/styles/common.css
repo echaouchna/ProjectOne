@@ -1,3 +1,12 @@
 body {
   padding-top: 70px;
 }
+.hidden {
+  display: none;
+}
+.username-padding {
+  padding-top: 15px;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
