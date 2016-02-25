@@ -63,9 +63,16 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-show="isAuthenticated()" class="custom-nav-padding" ng-cloak>{{getUsername()}}</li>
+            <li ng-show="isAuthenticated()" class="username-padding" ng-cloak>{{getUsername()}}</li>
             <li ng-hide="isAuthenticated()" ng-cloak>
-              <a href="/login">Login</a>
+              <a href="/register">
+                <i class="fa fa-user-plus"></i>
+                Signup</a>
+            </li>
+            <li ng-hide="isAuthenticated()" ng-cloak>
+              <a href="/login">
+                <i class="fa fa-sign-in"></i>
+                Signin</a>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -87,7 +94,9 @@
                   <a href="#">Separated link</a>
                 </li>
                 <li ng-show="isAuthenticated()">
-                  <a href="/logout">Logout</a>
+                  <a href="/logout">
+                    <i class="fa fa-sign-out"></i>
+                    Logout</a>
                 </li>
               </ul>
             </li>
@@ -96,14 +105,12 @@
         <!--/.nav-collapse -->
       </div>
     </nav>
-    <br/>
     <table class="table table-bordered hidden" ng-controller="authController">
       <tr ng-repeat="row in data">
         <td>{{row.value}}</td>
         <td>{{row.onclick}}</td>
       </tr>
     </table>
-    <br/>
     <%- body %>
 
     <!--

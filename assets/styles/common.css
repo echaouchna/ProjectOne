@@ -4,8 +4,9 @@ body {
 .hidden {
   display: none;
 }
-.custom-nav-padding {
+.username-padding {
   padding-top: 15px;
+  color: #fdfdfd;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
