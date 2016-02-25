@@ -19,4 +19,5 @@ projectOneApp.controller('authController', ['$scope', '$rootScope', 'authService
   authService.getUser().then(function(response) {
     $scope.user = response;
   });
+
 }]);
