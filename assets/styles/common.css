@@ -17,3 +17,6 @@ body {
 .navbar a {
   text-decoration: none;
 }
+.label-pad {
+  padding: 10px;
+}
