@@ -37,8 +37,8 @@
         <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
       </td>
       <td>{{row.has_ts}}</td>
-      <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm'}}</td>
-      <td>{{row.close_date | date:'MM/dd/yyyy hh:mm'}}</td>
+      <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
+      <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
       <td>
         <button class="btn btn-default" ng-click="">Get TS</td>
       </tr>

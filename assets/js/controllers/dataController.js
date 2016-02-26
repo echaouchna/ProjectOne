@@ -12,7 +12,9 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
   }, ];
 
   $scope.update = function(row) {
-    dataService.updateRow(row);
+    dataService.updateRow(row).then(function(response) {
+      row.close_date = response.close_date;
+    });
   };
 
   dataService.getIsins().then(function(response) {
