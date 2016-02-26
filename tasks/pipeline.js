@@ -19,6 +19,7 @@
 var cssFilesToInject = [
   'bower_components/bootstrap/dist/css/bootstrap.css',
   'bower_components/font-awesome/css/font-awesome.min.css',
+  'bower_components/angular-ui-switch/angular-ui-switch.min.css',
   'styles/**/*.css'
 ];
 
@@ -31,11 +32,12 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  'bower_components/jquery/dist/jquery.js',
+  'bower_components/jquery/dist/jquery.min.js',
   'bower_components/angular/angular.js',
   'bower_components/angular-route/angular-route.js',
   'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   'bower_components/bootstrap/dist/js/bootstrap.js',
+  'bower_components/angular-ui-switch/angular-ui-switch.min.js',
 
   'js/dependencies/**/*.js',
 

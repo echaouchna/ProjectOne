@@ -1,3 +1,3 @@
 'use strict';
 
-var projectOneApp = angular.module('projectOneApp', []);
+var projectOneApp = angular.module('projectOneApp', ['uiSwitch']);
