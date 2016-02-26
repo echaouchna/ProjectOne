@@ -4,9 +4,6 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
   $scope.data = [];
 
   $scope.aliveOptions = [{
-    value: '',
-    label: 'Choose a value'
-  }, {
     value: false,
     label: 'false'
   }, {

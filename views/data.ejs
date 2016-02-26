@@ -13,7 +13,7 @@
     <tr ng-repeat="row in data" ng-cloak>
       <td>{{row.isin}}</td>
       <td>
-        <select ng-change="update(row)" class="btn btn-default dropdown-toggle" ng-model="row.alive" ng-options="o.value as o.label for o in aliveOptions"></select>
+        <select ng-change="update(row)" ng-class="{'btn-success': row.alive, 'btn-danger': !row.alive}" class="btn btn-default dropdown-toggle" ng-model="row.alive" ng-options="o.value as o.label for o in aliveOptions"></select>
       </td>
       <td>{{row.has_ts}}</td>
       <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm'}}</td>
