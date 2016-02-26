@@ -14,3 +14,6 @@ body {
 .doc-icon {
   color: #F4D4B5;
 }
+.navbar a {
+  text-decoration: none;
+}
