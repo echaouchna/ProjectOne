@@ -11,7 +11,9 @@ projectOneApp.service('dataService', function($http, $q) {
     },
     'updateRow': function(row) {
       var defer = $q.defer();
-      $http.post('/bond/updateRow', row).success(function(resp) {
+      $http.post('/bond/updateRow', {
+        row: row
+      }).success(function(resp) {
         defer.resolve(resp);
       }).error(function(err) {
         defer.reject(err);

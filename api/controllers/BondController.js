@@ -28,7 +28,7 @@ module.exports = {
     });
   },
   updateRow: function(req, res) {
-    var row = req.params.all();
+    var row = req.param('row');
     var closeDateString = "";
 
     if (row.alive === false) {
