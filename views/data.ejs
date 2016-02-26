@@ -1,51 +1,53 @@
-<form>
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">
-        <i class="fa fa-search"></i>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="text" class="form-control" placeholder="Search isin" ng-model="searchObject.isin">
       </div>
-      <input type="text" class="form-control" placeholder="Search isin" ng-model="searchObject.isin">
     </div>
-  </div>
-</form>
+  </form>
 
-<table ng-controller="dataController" class="table table-hover">
-  <thead>
-    <tr>
-      <td>
-        <b>Isin</b>
-      </td>
-      <td>
-        <b>Alive</b>
-      </td>
-      <td>
-        <b>Has TS</b>
-      </td>
-      <td>
-        <b>TS last update</b>
-      </td>
-      <td>
-        <b>Close date</b>
-      </td>
-      <td></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="row in data | filter:searchObject" ng-cloak>
-      <td>{{row.isin}}</td>
-      <td>
-        <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
-      </td>
-      <td>
-        <label class="label label-pad" ng-class="{'label-success': row.has_ts, 'label-danger': !row.has_ts}">
-          <i ng-show="row.has_ts" class="fa fa-check"></i>
-          <i ng-hide="row.has_ts" class="fa fa-times"></i>
-        </label>
-      </td>
-      <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
-      <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
-      <td>
-        <button class="btn btn-default" ng-click="">Get TS</td>
+  <table ng-controller="dataController" class="table table-hover">
+    <thead>
+      <tr>
+        <td>
+          <b>Isin</b>
+        </td>
+        <td>
+          <b>Alive</b>
+        </td>
+        <td>
+          <b>Has TS</b>
+        </td>
+        <td>
+          <b>TS last update</b>
+        </td>
+        <td>
+          <b>Close date</b>
+        </td>
+        <td></td>
       </tr>
-    </tbody>
-  </table>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in data | filter:searchObject" ng-cloak>
+        <td>{{row.isin}}</td>
+        <td>
+          <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
+        </td>
+        <td>
+          <label class="label label-pad" ng-class="{'label-success': row.has_ts, 'label-danger': !row.has_ts}">
+            <i ng-show="row.has_ts" class="fa fa-check"></i>
+            <i ng-hide="row.has_ts" class="fa fa-times"></i>
+          </label>
+        </td>
+        <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
+        <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
+        <td>
+          <button class="btn btn-default" ng-click="">Get TS</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
