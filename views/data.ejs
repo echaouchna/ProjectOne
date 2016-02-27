@@ -38,10 +38,10 @@
           <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
         </td>
         <td>
-          <!-- <label class="label label-pad" ng-class="{'label-success': row.has_ts, 'label-danger': !row.has_ts}">-->
-          <i ng-show="row.has_ts" class="fa fa-check green fa-lg"></i>
-          <i ng-hide="row.has_ts" class="fa fa-times red fa-lg"></i>
-          <!-- </label>-->
+          <label class="label border--blue label-pad">
+            <i ng-show="row.has_ts" class="fa fa-check fa-shadow olive fa-lg fa-fw"></i>
+            <i ng-hide="row.has_ts" class="fa fa-times fa-shadow red fa-lg fa-fw"></i>
+          </label>
         </td>
         <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
         <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>

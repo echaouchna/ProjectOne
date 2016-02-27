@@ -26,9 +26,6 @@ body {
 .table tbody>tr>td {
   vertical-align: middle;
 }
-
-/*.fa- {
-    color: #fff;
-    text-shadow: 1px 1px 1px #ccc;
-    font-size: 1.5em;
-}*/
+.fa-shadow {
+  text-shadow: 1px 1px 1px #ccc;
+}
