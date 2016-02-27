@@ -10,44 +10,46 @@
     </div>
   </form>
 
-  <table ng-controller="dataController" class="table table-hover">
-    <thead>
-      <tr>
-        <td>
-          <b>Isin</b>
-        </td>
-        <td>
-          <b>Alive</b>
-        </td>
-        <td>
-          <b>Has TS</b>
-        </td>
-        <td>
-          <b>TS last update</b>
-        </td>
-        <td>
-          <b>Close date</b>
-        </td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="row in data | filter:searchObject" ng-cloak>
-        <td>{{row.isin}}</td>
-        <td>
-          <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
-        </td>
-        <td>
-          <label class="label border--blue label-pad">
-            <i ng-show="row.has_ts" class="fa fa-check fa-shadow olive fa-lg fa-fw"></i>
-            <i ng-hide="row.has_ts" class="fa fa-times fa-shadow red fa-lg fa-fw"></i>
-          </label>
-        </td>
-        <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
-        <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
-        <td>
-          <button class="btn btn-default" ng-click="">Get TS</td>
+  <div class="table-responsive">
+    <table ng-controller="dataController" class="table table-hover">
+      <thead>
+        <tr>
+          <td>
+            <b>Isin</b>
+          </td>
+          <td>
+            <b>Alive</b>
+          </td>
+          <td>
+            <b>Has TS</b>
+          </td>
+          <td>
+            <b>TS last update</b>
+          </td>
+          <td>
+            <b>Close date</b>
+          </td>
+          <td></td>
         </tr>
-      </tbody>
-    </table>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in data | filter:searchObject" ng-cloak>
+          <td>{{row.isin}}</td>
+          <td>
+            <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
+          </td>
+          <td>
+            <label class="label label-pad">
+              <i ng-show="row.has_ts" class="fa fa-check fa-shadow olive fa-lg fa-fw"></i>
+              <i ng-hide="row.has_ts" class="fa fa-times fa-shadow red fa-lg fa-fw"></i>
+            </label>
+          </td>
+          <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
+          <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
+          <td>
+            <button class="btn btn-default" ng-click="">Get TS</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
