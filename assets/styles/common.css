@@ -20,3 +20,15 @@ body {
 .label-pad {
   padding: 10px;
 }
+.table td {
+  text-align: center;
+}
+.table tbody>tr>td {
+  vertical-align: middle;
+}
+
+/*.fa- {
+    color: #fff;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}*/
