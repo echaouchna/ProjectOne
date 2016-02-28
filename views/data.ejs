@@ -1,4 +1,4 @@
-<div class="container">
+<div ng-controller="dataController" class="container" cg-busy="getDataPromise">
   <form>
     <div class="form-group">
       <div class="input-group">
@@ -12,7 +12,7 @@
   </form>
 
   <div class="table-responsive">
-    <table ng-controller="dataController" class="table table-hover" cg-busy="getDataPromise">
+    <table class="table table-hover">
       <thead class="">
         <tr>
           <th ng-repeat="(i, th) in head" ng:click="changeSorting(i)" class="col-md-2" ng-cloak>
@@ -22,7 +22,7 @@
           <th></th>
         </tr>
       </thead>
-      <tfoot>
+      <tfoot ng-show="totalItems">
         <td colspan="6">
           <div class="pull-right navigation-bar">
             <div class="btn-group">
