@@ -36,3 +36,6 @@ body {
   margin: 0px !important;
   vertical-align: middle;
 }
+.table-responsive .dropdown-menu {
+  position: relative !important;
+}
