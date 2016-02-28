@@ -12,7 +12,7 @@
 
   <div class="table-responsive">
     <table ng-controller="dataController" class="table table-hover">
-      <thead>
+      <thead class="bg-black silver">
         <tr>
           <td>
             <b>Isin</b>
@@ -32,8 +32,27 @@
           <td></td>
         </tr>
       </thead>
+      <tfoot>
+        <td colspan="6">
+          <div class="pull-right">
+            <ul class="pagination">
+              <li ng-class="{disabled: currentPage == 0}">
+                <a href ng-click="prevPage()">« Prev</a>
+              </li>
+
+              <li ng-repeat="n in range()" ng-class="{active: n === currentPage}" ng-click="setPage(n)">
+                <a href ng-bind="n">1</a>
+              </li>
+
+              <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                <a href ng-click="nextPage()">Next »</a>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tfoot>
       <tbody>
-        <tr ng-repeat="row in data | filter:searchObject" ng-cloak>
+        <tr ng-repeat="row in filtered | filter:searchObject | filter:paginate" ng-cloak>
           <td>{{row.isin}}</td>
           <td>
             <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
