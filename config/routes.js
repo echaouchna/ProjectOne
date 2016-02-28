@@ -36,8 +36,11 @@ module.exports.routes = {
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
   'get /me': 'AuthController.me',
-  '/data': {
-    view: 'data'
+  '/': {
+    view: 'data',
+    locals: {
+      layout: 'layout0'
+    }
   },
 
   'post /auth/local': 'AuthController.callback',
@@ -46,7 +49,7 @@ module.exports.routes = {
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
-  '/': {
+  '/data': {
     view: 'homepage',
     policy: "sessionAuth"
   }
