@@ -58,8 +58,8 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
         $scope.data = response;
         $scope.filtered = $filter('filter')($scope.data, $scope.searchObject);
         $scope.totalItems = $scope.filtered.length;
-        if ($scope.totalItems > 0) {
-          $scope.currentPage = 1;
+        if ($scope.totalItems === 0) {
+          $scope.currentPage = 0;
         }
       });
       poll();
