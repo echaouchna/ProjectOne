@@ -3,6 +3,14 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
 
   $scope.data = [];
 
+  $scope.head = {
+    isin: "Isin",
+    alive: "Alive",
+    has_ts: "Has TS",
+    last_update_date: "TS last update",
+    close_date: "Close date"
+  };
+
   $scope.aliveOptions = [{
     value: false,
     label: 'false'
@@ -10,6 +18,11 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
     value: true,
     label: 'true'
   }, ];
+
+  $scope.sort = {
+    column: 'isin',
+    descending: false
+  };
 
   $scope.totalItems = 0;
   $scope.currentPage = 0;
@@ -30,11 +43,11 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
     }
   });
 
-  $scope.paginate = function(value) {
+  $scope.paginate = function(value, i, list) {
     var begin, end, index;
     begin = ($scope.currentPage - 1) * $scope.numPerPage;
     end = begin + $scope.numPerPage;
-    index = $scope.filtered.indexOf(value);
+    index = list.indexOf(value);
     return (begin <= index && index < end);
   };
 
@@ -75,6 +88,23 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
       ret.push(i);
     }
     return ret;
+  };
+
+  $scope.selectedCls = function(column) {
+    if (column == $scope.sort.column) {
+      return $scope.sort.descending ? "fa-sort-alpha-desc" : "fa-sort-alpha-asc";
+    }
+    return "fa-sort";
+  };
+
+  $scope.changeSorting = function(column) {
+    var sort = $scope.sort;
+    if (sort.column == column) {
+      sort.descending = !sort.descending;
+    } else {
+      sort.column = column;
+      sort.descending = false;
+    }
   };
 
   $scope.$watch('searchObject', function(newVal, oldVal) {

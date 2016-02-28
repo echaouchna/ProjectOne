@@ -12,24 +12,13 @@
 
   <div class="table-responsive">
     <table ng-controller="dataController" class="table table-hover">
-      <thead class="bg-black silver">
+      <thead class="">
         <tr>
-          <td>
-            <b>Isin</b>
-          </td>
-          <td>
-            <b>Alive</b>
-          </td>
-          <td>
-            <b>Has TS</b>
-          </td>
-          <td>
-            <b>TS last update</b>
-          </td>
-          <td>
-            <b>Close date</b>
-          </td>
-          <td></td>
+          <th ng-repeat="(i, th) in head" ng:click="changeSorting(i)" class="col-md-2" ng-cloak>
+            {{th}}
+            <i class="fa fa-check fa-fw" ng:class="selectedCls(i)"></i>
+          </th>
+          <th></th>
         </tr>
       </thead>
       <tfoot>
@@ -52,7 +41,7 @@
         </td>
       </tfoot>
       <tbody>
-        <tr ng-repeat="row in filtered | filter:searchObject | filter:paginate" ng-cloak>
+        <tr ng-repeat="row in filtered | orderBy:sort.column:sort.descending | filter:searchObject | filter:paginate" ng-cloak>
           <td>{{row.isin}}</td>
           <td>
             <switch id="alive" name="alive" type="checkbox" ng-change="update(row)" ng-model="row.alive" class="green small"></switch>
