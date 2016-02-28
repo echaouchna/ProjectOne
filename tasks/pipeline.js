@@ -20,6 +20,7 @@ var cssFilesToInject = [
   'bower_components/bootstrap/dist/css/bootstrap.css',
   'bower_components/font-awesome/css/font-awesome.min.css',
   'bower_components/angular-ui-switch/angular-ui-switch.min.css',
+  'bower_components/angular-busy/dist/angular-busy.css',
   'styles/**/*.css'
 ];
 
@@ -38,6 +39,7 @@ var jsFilesToInject = [
   'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   'bower_components/bootstrap/dist/js/bootstrap.js',
   'bower_components/angular-ui-switch/angular-ui-switch.min.js',
+  'bower_components/angular-busy/dist/angular-busy.js',
 
   'js/dependencies/**/*.js',
 

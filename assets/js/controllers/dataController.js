@@ -43,7 +43,7 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
     });
   };
 
-  dataService.getIsins().then(function(response) {
+  $scope.getDataPromise = dataService.getIsins().then(function(response) {
     $scope.data = response;
     $scope.filtered = $filter('filter')($scope.data, $scope.searchObject);
     $scope.totalItems = $scope.filtered.length;

@@ -12,7 +12,7 @@
   </form>
 
   <div class="table-responsive">
-    <table ng-controller="dataController" class="table table-hover">
+    <table ng-controller="dataController" class="table table-hover" cg-busy="getDataPromise">
       <thead class="">
         <tr>
           <th ng-repeat="(i, th) in head" ng:click="changeSorting(i)" class="col-md-2" ng-cloak>
