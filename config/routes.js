@@ -37,10 +37,7 @@ module.exports.routes = {
   'get /register': 'AuthController.register',
   'get /me': 'AuthController.me',
   '/': {
-    view: 'data',
-    locals: {
-      layout: 'layout0'
-    }
+    view: 'data'
   },
 
   'post /auth/local': 'AuthController.callback',
