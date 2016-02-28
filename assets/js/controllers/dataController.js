@@ -1,5 +1,4 @@
 projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService', '$filter', '$timeout', function($scope, $rootScope, dataService, $filter, $timeout) {
-  $scope.user = undefined;
 
   $scope.data = [];
 
@@ -83,7 +82,7 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
   };
 
   $scope.nextPage = function() {
-    var numberOfPages = Math.ceil($scope.data.length / $scope.perPageSize);
+    var numberOfPages = Math.ceil($scope.filtered.length / $scope.perPageSize);
     if ($scope.currentPage < numberOfPages) {
       $scope.currentPage++;
     }
@@ -92,6 +91,11 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
   $scope.setPage = function(n) {
     $scope.currentPage = n;
   };
+
+  $scope.isLastPage = function() {
+    var numberOfPages = Math.ceil($scope.filtered.length / $scope.perPageSize);
+    return numberOfPages === $scope.currentPage;
+  }
 
   $scope.range = function() {
     var ret = [];
