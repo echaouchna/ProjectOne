@@ -1,4 +1,4 @@
-projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService', '$filter', function($scope, $rootScope, dataService, $filter) {
+projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService', '$filter', '$timeout', function($scope, $rootScope, dataService, $filter, $timeout) {
   $scope.user = undefined;
 
   $scope.data = [];
@@ -51,6 +51,22 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
       $scope.currentPage = 1;
     }
   });
+
+  var poll = function() {
+    $timeout(function() {
+      dataService.getIsins().then(function(response) {
+        $scope.data = response;
+        $scope.filtered = $filter('filter')($scope.data, $scope.searchObject);
+        $scope.totalItems = $scope.filtered.length;
+        if ($scope.totalItems > 0) {
+          $scope.currentPage = 1;
+        }
+      });
+      poll();
+    }, 10000);
+  };
+
+  poll();
 
   $scope.paginate = function(value, i, list) {
     var begin, end, index;
