@@ -10,7 +10,7 @@
     </div>
   </form>
 
-  <div class="table-responsive">
+  <div class="">
     <table ng-controller="dataController" class="table table-hover">
       <thead class="">
         <tr>
@@ -23,7 +23,19 @@
       </thead>
       <tfoot>
         <td colspan="6">
-          <div class="pull-right">
+          <div class="pull-right navigation-bar">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-cloak>
+                Size :
+                {{perPageSize}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li ng-repeat="size in pageSizes">
+                  <a href="#" ng-click="setPageSize(size)">{{size}}</a>
+                </li>
+              </ul>
+            </div>
             <ul class="pagination">
               <li ng-class="{disabled: currentPage == 0}">
                 <a href ng-click="prevPage()">« Prev</a>

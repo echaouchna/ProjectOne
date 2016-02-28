@@ -11,6 +11,15 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
     close_date: "Close date"
   };
 
+  $scope.pageSizes = [
+    3,
+    5,
+    10,
+    25,
+    100,
+    500
+  ];
+
   $scope.aliveOptions = [{
     value: false,
     label: 'false'
@@ -26,7 +35,7 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
 
   $scope.totalItems = 0;
   $scope.currentPage = 0;
-  $scope.numPerPage = 3;
+  $scope.perPageSize = 3;
 
   $scope.update = function(row) {
     dataService.updateRow(row).then(function(response) {
@@ -45,8 +54,8 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
 
   $scope.paginate = function(value, i, list) {
     var begin, end, index;
-    begin = ($scope.currentPage - 1) * $scope.numPerPage;
-    end = begin + $scope.numPerPage;
+    begin = ($scope.currentPage - 1) * $scope.perPageSize;
+    end = begin + $scope.perPageSize;
     index = list.indexOf(value);
     return (begin <= index && index < end);
   };
@@ -58,7 +67,7 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
   };
 
   $scope.nextPage = function() {
-    var numberOfPages = Math.ceil($scope.data.length / $scope.numPerPage);
+    var numberOfPages = Math.ceil($scope.data.length / $scope.perPageSize);
     if ($scope.currentPage < numberOfPages) {
       $scope.currentPage++;
     }
@@ -70,7 +79,7 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
 
   $scope.range = function() {
     var ret = [];
-    var numberOfPages = Math.ceil($scope.totalItems / $scope.numPerPage);
+    var numberOfPages = Math.ceil($scope.totalItems / $scope.perPageSize);
     if (numberOfPages < $scope.currentPage) {
       $scope.currentPage = 1;
     }
@@ -88,6 +97,10 @@ projectOneApp.controller('dataController', ['$scope', '$rootScope', 'dataService
       ret.push(i);
     }
     return ret;
+  };
+
+  $scope.setPageSize = function(size) {
+    $scope.perPageSize = size;
   };
 
   $scope.selectedCls = function(column) {
