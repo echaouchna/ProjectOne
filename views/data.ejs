@@ -65,8 +65,8 @@
               <i ng-hide="row.has_ts" class="fa fa-times fa-shadow red fa-lg fa-fw"></i>
             </label>
           </td>
-          <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
-          <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
+          <td>{{row.ts_update_date | date:'MM/dd/yyyy hh:mm:ss a'}}</td>
+          <td>{{row.close_date | date:'MM/dd/yyyy hh:mm:ss a'}}</td>
           <td>
             <button class="btn btn-default" ng-click="">Get TS</td>
           </tr>
