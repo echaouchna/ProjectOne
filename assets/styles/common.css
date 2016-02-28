@@ -39,3 +39,9 @@ body {
 .table-responsive .dropdown-menu {
   position: relative !important;
 }
+.search-clear {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 500;
+}

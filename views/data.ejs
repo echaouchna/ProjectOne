@@ -5,7 +5,8 @@
         <div class="input-group-addon">
           <i class="fa fa-search"></i>
         </div>
-        <input type="text" class="form-control" placeholder="Search isin" ng-model="searchObject.isin">
+        <input type="text" class="form-control" placeholder="Search isin" ng-model="searchObject.isin" autofocus>
+        <i class="fa fa-times-circle search-clear gray" ng-class="{'hidden': !searchObject.isin}" ng-click="searchObject.isin=''" ng-cloak></i>
       </div>
     </div>
   </form>
